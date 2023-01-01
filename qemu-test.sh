@@ -1,7 +1,10 @@
 #!/usr/bin/env sh
 
-# deps
+# deps:
 # pacman -S qemu qemu-system-x86 qemu-img qemu-desktop
+
+# Replace the value here with the downloaded arch iso
+ARCHISO=archlinux-2022.12.01-x86_64.iso
 
 QCOW_DISK_FILE_NAME=arch-test.qcow
 
@@ -12,4 +15,4 @@ fi
 qemu-system-x86_64 \
   -hda $QCOW_DISK_FILE_NAME \
   -m 2048 -enable-kvm -smp 4 \
-  -cdrom archlinux-2022.12.01-x86_64.iso
+  -cdrom $ARCHISO

@@ -6,11 +6,14 @@
 # - working internet connection
 # - user is properly set up with sudo
 
+# exit if any command fails
+set -e
+
 cd ~
 
 sudo pacman -Suy
 
-sudo pacman -S --needed base-devel
+sudo pacman -S --needed base-devel \
     git curl wget xclip ripgrep fd \
     xterm rxvt-unicode kitty zsh \
     vim emacs-nativecomp \
@@ -32,7 +35,7 @@ git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
 ~/.emacs.d/bin/doom install --force
 
 # Install yay
-pacman -S --needed git base-devel
+sudo pacman -S --needed git base-devel
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
@@ -42,22 +45,22 @@ cd ~
 timedatectl set-ntp true
 
 # add user to docker group (requires login)
-gpasswd -a ruben docker
+sudo gpasswd -a ruben docker
 
-systemctl enable bluetooth
-systemctl start bluetooth
+sudo systemctl enable bluetooth
+sudo systemctl start bluetooth
 
 systemctl enable --user pulseaudio
 systemctl start --user pulseaudio
 
-systemctl enable docker
-systemctl start docker
+sudo systemctl enable docker
+sudo systemctl start docker
 
 systemctl enable --user emacs
 systemctl start --user emacs
 
 # enable and start tlp (check /etc/tlp.conf for config)
-systemctl enable tlp && systemctl start tlp
+sudo systemctl enable tlp && systemctl start tlp
 
 # Doom emacs golang specific dependencies
 go install github.com/nsf/gocode@latest
