@@ -13,16 +13,21 @@ cd ~
 
 sudo pacman -Suy
 
-sudo pacman -S --needed base-devel \
+sudo pacman -S --needed base-devel cmake \
     git curl wget xclip ripgrep fd \
     xterm rxvt-unicode kitty zsh \
+    fzf \
     vim emacs-nativecomp \
     xorg xorg-apps xorg-xinit \
     noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra \
     ttf-jetbrains-mono \
     ttf-dejavu \
     i3-gaps i3blocks i3lock i3status \
+    xfce4-screenshooter \
+    dmenu rofi \
     bluez bluez-utils pulseaudio pulseaudio-alsa pulseaudio-bluetooth \
+    inetutils \
+    feh \
     firefox \
     docker docker-compose \
     tlp \
